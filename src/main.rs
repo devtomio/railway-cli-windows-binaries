@@ -1,8 +1,11 @@
 use {
     actix_files::Files,
     actix_web::{middleware::Logger, App, HttpServer},
-    std::io
+    std::io,
+    actix_web_static_files::ResourceFiles
 };
+
+include!(concat!(env!("OUT_DIR"), "/generated.rs"));
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
@@ -12,7 +15,7 @@ async fn main() -> io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
-            .service(Files::new("/binaries", "binaries/").show_files_listing())
+            .service(ResourceFiles::new("/binaries", generated))
             .service(Files::new("/", "./static").index_file("index.html"))
             .wrap(Logger::default())
     })

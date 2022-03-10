@@ -10,6 +10,10 @@ actix-web = "4"
 actix-files = "0.6"
 env_logger = "0.9.0"
 log = "0.4"
+actix-web-static-files = "3.0"
+
+[build-dependencies]
+actix-web-static-files = "3.0"
 
 [profile.release]
 lto = "fat"
