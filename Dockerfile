@@ -1,4 +1,4 @@
-FROM rust:nightly
+FROM rustlang/rust:nightly
 
 ARG CLI_VERSION
 WORKDIR /usr/src/app
